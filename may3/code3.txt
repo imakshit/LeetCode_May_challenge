@@ -1,0 +1,25 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+     
+      ArrayList<Character> magz = new ArrayList<>();
+        for(char i : magazine.toCharArray()){
+            magz.add(i);
+        }
+        
+        for(char j: ransomNote.toCharArray()){
+            if(magz.isEmpty()){
+                return false;
+            }
+            else{
+                if(magz.contains(j)){
+                    magz.remove(Character.valueOf(j));
+                    
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+        
+    }
+}
