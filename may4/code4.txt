@@ -1,0 +1,16 @@
+class Solution {
+    public int findComplement(int num) {
+        int i = 0 ; 
+        int result = 0;
+        while(num>0){
+            if((1 & num) == 0){
+                result+=Math.pow(2,i);
+                
+            }
+            i++;
+            num = num>>1;
+        }
+        return result;
+        
+    }
+}
