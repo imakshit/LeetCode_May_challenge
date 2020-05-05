@@ -1,0 +1,24 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        HashMap<Character,Integer> mymap = new HashMap<Character,Integer>();
+        
+        for(int i =0 ; i<s.length(); i++){
+            
+            if(mymap.containsKey(s.charAt(i)))
+            {
+                mymap.put(s.charAt(i) , mymap.get(s.charAt(i))+1);
+            }
+            else{
+                mymap.put(s.charAt(i) , 1);
+            }
+        
+    }
+        for(int i =0 ; i<s.length() ; i++){
+            
+            if(mymap.get(s.charAt(i))==1){
+                return i;
+            }
+        }
+        return -1;
+}
+    }
