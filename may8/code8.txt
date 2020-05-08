@@ -1,0 +1,24 @@
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+		//base condition
+	if(coordinates.length==2){
+            return true;
+        }
+        int dx = coordinates[1][0]-coordinates[0][0]; //x difference of first two points
+        int dy = coordinates[1][1] - coordinates[0][1]; //y difference of first two points
+        boolean res = true; //result
+        
+      
+        for(int i =1 ; i<coordinates.length-1; i++){         
+                int dxn = coordinates[i+1][0]-coordinates[i][0]; //x differnece of next points
+                int dyn = coordinates[i+1][1]-coordinates[i][1]; // y difference of next points
+          	 //check for collinearity
+                if(dx*dyn!=dy*dxn){
+                    res = false;
+                    return res;
+                }          
+            
+        }
+        return res;
+    }
+}
