@@ -1,0 +1,36 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        int color = image[sr][sc];
+        if(color!=newColor){
+            dfssol(image,sr,sc,color,newColor,image.length,image[0].length);
+            
+        }
+        return image;
+    }
+    
+    public static void dfssol(int[][]image , int r , int c , int color , int newColor , int m , int n){
+        if(image[r][c]==color){
+            image[r][c] = newColor;
+            //up check
+            if(r>=1){
+                dfssol(image,r-1,c,color,newColor,m,n);
+            }
+            //left check
+            if(c>=1){
+                dfssol(image,r,c-1,color,newColor,m,n);
+                
+            }
+            //down check
+            if(r+1<m){
+                dfssol(image,r+1,c,color,newColor,m,n);
+                
+            }
+            //right check
+            if(c+1<n){
+                dfssol(image,r,c+1,color,newColor,m,n);
+                
+            }
+        }
+    }
+    
+}
