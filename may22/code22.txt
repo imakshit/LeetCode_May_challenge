@@ -1,0 +1,41 @@
+class Solution {
+    public String frequencySort(String s) {
+        
+        //initialising res
+        StringBuilder res = new StringBuilder();
+        if(s==null || s.length()==0){
+            return res.toString();
+        }
+        
+        //initialise hashmap and add all the char from string s in the map with freq
+        HashMap<Character,Integer> map = new HashMap<>();
+        for(char c: s.toCharArray()){
+            map.put(c, map.getOrDefault(c,0)+1);
+        }
+        
+        //initialise a list 
+         List<Character> [] bucketlist = new List[s.length() + 1]; 
+        for (char key : map.keySet()) {
+            // build a frequency list of each char in map
+            int freq = map.get(key);
+            if (bucketlist[freq] == null) {
+                bucketlist[freq] = new ArrayList<Character>();
+            }
+            bucketlist[freq].add(key);
+        }
+        
+        //iterate through bucketlist and append the character in result string frequency times.
+        for (int i = bucketlist.length-1; i >= 0; i--) {
+            if (bucketlist[i] != null) {
+                for (char c : bucketlist[i]) {
+                    // append 'frequnecy' times
+                    for (int j = 0; j < i; j++) {
+                        res.append(c);    
+                    }
+                }     
+            }
+        }
+        //return result
+        return res.toString();
+    }
+}
