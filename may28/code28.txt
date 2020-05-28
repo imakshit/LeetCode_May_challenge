@@ -1,0 +1,20 @@
+class Solution {
+    public int[] countBits(int num) {
+        int[] res = new int[num+1]; //size num+1 bcz we want count from 0 till num
+        res[0] = 0; // 0 has no 1's
+        
+        for(int i =1; i<num+1 ; i++){
+            res[i] = res[i & (i-1)]+1;
+        }
+        return res;
+    }
+}
+
+/*
+to remove the least significant bit
+we do - 
+num AND num-1
+this removes the least significant bit ie right most bit
+the right part of the number will remain same
+So, total count of 1's in num = count of 1's in ["num and num-1" + 1] 
+*/
