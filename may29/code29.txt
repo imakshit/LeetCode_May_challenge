@@ -1,0 +1,27 @@
+public class Solution {
+    List<Integer>[] depends;
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        depends = new List[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            depends[i] = new ArrayList<Integer>();
+        }
+
+        for (int[] rule : prerequisites) {
+            if (this.isConnected(rule[1], rule[0])) {
+                return false;
+            }
+            depends[rule[0]].add(rule[1]);
+        }
+        return true;
+    }
+
+    private boolean isConnected(int u, int v) {
+        for (Integer node : depends[u]) {
+            if (node == v || this.isConnected(node, v)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
